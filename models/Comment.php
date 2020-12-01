@@ -1,0 +1,83 @@
+<?php
+
+namespace Projet4\Model;
+
+class Comment{
+    private $_id,
+            $_first_name,
+            $_last_name,
+            $_date_comment,
+            $_chapter_id,
+            $_comment;
+
+    public function __construct(Array $data){
+        $this->hydrate($data);
+    }
+            
+    public function hydrate($data){
+        foreach($data as $key=>$value){
+            $method='set_'.$key;
+                if(method_exists($this,$method)){
+                    $this->$method($value);
+                }
+        } 
+    }
+
+    public function set_id($id){
+        if(is_numeric($id) && $id > 0){
+            $this->_id=$id;
+        }
+    }
+
+    public function set_first_name($first_name){
+        if(is_string($first_name)){
+            $this->_first_name=$first_name;
+        }
+    }
+
+    public function set_last_name($last_name){
+        if(is_string($last_name)){
+            $this->_last_name=$last_name;
+        }
+    }
+
+    public function set_date_comment($date_comment){
+        $this->_date_comment=$date_comment;
+    }
+
+    public function set_chapter_id($chapter_id){
+        if(is_numeric($chapter_id) && $chapter_id > 0){
+            $this->_chapter_id=$chapter_id;
+        }
+    }
+
+    public function set_comment($comment){
+        if(is_string($comment)){
+            $this->_comment=$comment;
+        }
+    }
+
+    public function get_id(){
+        return $this->_id;
+    }
+
+    public function get_first_name(){
+        return $this->_first_name;
+    }
+
+    public function get_last_name(){
+        return $this->_last_name;
+    }
+
+    public function get_date_comment(){
+        return $this->_date_comment;
+    }
+
+    public function get_chapter_id(){
+        return $this->_chapter_id;
+    }
+
+    public function get_comment(){
+        return $this->_comment;
+    }
+}

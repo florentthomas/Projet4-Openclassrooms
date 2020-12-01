@@ -1,0 +1,10 @@
+header h1{
+    position:absolute;
+    top:20%;
+    right: 15%;
+}
+
+header{
+    text-align: center;
+    position: relative;
+}
