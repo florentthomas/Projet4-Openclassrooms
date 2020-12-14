@@ -2,7 +2,12 @@
 
 namespace Projet4\Model;
 
+require_once(ROOT."models/Hydrate.php");
+
 class ChapterModel{
+
+    use hydrate;
+
     private $_title,
             $_id,
             $_content,
@@ -13,17 +18,6 @@ class ChapterModel{
     public function __construct(Array $data){
         $this->hydrate($data);
     }
-
-    
-    public function hydrate($data){
-            foreach($data as $key=>$value){
-                $method='set_'.$key;
-                if(method_exists($this,$method)){
-                    $this->$method($value);
-                }
-            } 
-    }
-    
 
     public function set_title($title){
         if(is_string($title)){

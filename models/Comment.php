@@ -2,7 +2,12 @@
 
 namespace Projet4\Model;
 
+require_once(ROOT."models/Hydrate.php");
+
 class Comment{
+
+    use hydrate;
+
     private $_id,
             $_first_name,
             $_last_name,
@@ -14,15 +19,6 @@ class Comment{
         $this->hydrate($data);
     }
             
-    public function hydrate($data){
-        foreach($data as $key=>$value){
-            $method='set_'.$key;
-                if(method_exists($this,$method)){
-                    $this->$method($value);
-                }
-        } 
-    }
-
     public function set_id($id){
         if(is_numeric($id) && $id > 0){
             $this->_id=$id;
