@@ -16,7 +16,7 @@ class Admin{
 
     public function set_view(){
         $this->_view=new View('AdminView','Administration');
-        $this->_view->generate(Array("test"=>5));
+        $this->_view->generate();
     
     }
 }

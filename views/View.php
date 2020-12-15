@@ -11,7 +11,7 @@ class View{
         $this->_title=htmlspecialchars($title);
     }
 
-    public function generate($data){
+    public function generate($data=[]){
         $content=$this->generateFile($this->_file,$data);
         $view=$this->generateFile("views/template.php",array('title' => $this->_title,'content' => $content));
 

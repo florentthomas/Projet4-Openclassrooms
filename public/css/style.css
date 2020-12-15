@@ -8,3 +8,7 @@ header{
     text-align: center;
     position: relative;
 }
+
+#page_connection_admin{
+    margin:5%;
+}
