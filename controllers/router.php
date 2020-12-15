@@ -22,7 +22,21 @@ class Router{
                 if(file_exists(ROOT.$controller_file)){
                     require(ROOT.$controller_file);       
                     $this->_controller=new $controller($url);
-                    $this->_controller->index();
+
+                    if(isset($url[1]) && !is_numeric($url[1])){
+                        $action=$url[1];
+                    }
+                    elseif(isset($url[2])){
+                        $action=$url[2];
+                    }
+
+                    if(isset($action)){
+                        $this->_controller->$action();
+                    }
+                    else{
+                        $this->_controller->index();
+                    }
+                    
                 }
                 else{
                     throw new Exception('La page demandée n\'existe pas');
