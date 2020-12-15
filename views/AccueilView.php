@@ -47,6 +47,7 @@ include('views/navView.php');
 
 
 <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
+<span id=scroll_top><img src="<?=URL?>images/scroll.png" alt="Aller en haut"/></span>
 <?php
 include('views/FooterView.php');
 ?>

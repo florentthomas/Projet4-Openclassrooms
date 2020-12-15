@@ -62,3 +62,4 @@ require('views/navView.php');
     
 </section>
 
+<span id=scroll_top><img src="<?=URL?>images/scroll.png" alt="Aller en haut"/></span>

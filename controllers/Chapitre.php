@@ -61,7 +61,8 @@ class Chapitre{
                                            'chapter_id' => $_POST['chapter_id']));
                
                 $this->_commentManager->add_comment($comment);
-                header('Location:'.$this->_chapterManager->get_chapter($this->_url[1])->get_id());
+            
+                header('Location:'.URL."chapitre/".$this->_chapterManager->get_chapter($this->_url[1])->get_id());
             }
             else{
                 Throw New \Exception('Le formulaire n\'est pas complet');
