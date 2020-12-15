@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-info text-white bg-light">
 
-  <a class="navbar-brand" href="../accueil">
+  <a class="navbar-brand" href=<?=URL?>>
     <img src="public/images/Jean_Forteroche.jpg" class="rounded-circle center-block" style="max-width:50px" alt="photo de Jean Forteroche"/>
   </a>
 
