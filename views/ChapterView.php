@@ -48,6 +48,13 @@ require('views/navView.php');
                 <?=htmlspecialchars($comment->get_last_name()) ?>
                 <?=htmlspecialchars($comment->get_date_comment()->format('d/m/Y à h:i'))?>
                 <div><button class="btn btn-danger" id="signal">Signaler</button></div>
+                <div class="signal_comment">
+                    <form>
+                        <p>Voulez-vous signaler ce commentaire?</p>
+                        <button type="submit" class="btn btn-danger">Signaler</button>
+                        <button type="button" class="btn btn-secondary">Fermer</button>
+                    </form>
+                </div>
             </h5>
 
             <div class="card-body">
