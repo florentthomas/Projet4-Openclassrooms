@@ -21,6 +21,6 @@ header{
     display: none;
 }
 
-#scroll_top img{
-    width:50px
+#scroll_top{
+    font-size:2rem;
 }
