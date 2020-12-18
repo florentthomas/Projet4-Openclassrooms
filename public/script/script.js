@@ -1,4 +1,4 @@
-
+//button scroll to top
 const btn_top=document.getElementById("scroll_top");
                   
 window.addEventListener("scroll",function(){
@@ -22,3 +22,11 @@ function animationScroll(){
         requestAnimationFrame(animationScroll);
     }  
 }
+
+//form comment signal
+
+const signalCommentElt=document.getElementById("signal_comment");
+const signalBtn=document.getElementById("signal");
+const bodyElt=document.querySelector("body");
+
+

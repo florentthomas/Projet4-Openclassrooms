@@ -23,6 +23,10 @@ header{
     color: #007bff;
 }
 
-.signal_comment{
+#signal_comment{
     display: none;
+    background-color: white;
+    box-shadow: 3px 3px 3px black;
+    padding: 5%;
+    border-radius: 10px;
 }

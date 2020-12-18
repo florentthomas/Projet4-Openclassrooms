@@ -47,13 +47,29 @@ require('views/navView.php');
                 <?=htmlspecialchars($comment->get_first_name()) ?>
                 <?=htmlspecialchars($comment->get_last_name()) ?>
                 <?=htmlspecialchars($comment->get_date_comment()->format('d/m/Y à h:i'))?>
-                <div><button class="btn btn-danger" id="signal">Signaler</button></div>
-                <div class="signal_comment">
-                    <form>
-                        <p>Voulez-vous signaler ce commentaire?</p>
-                        <button type="submit" class="btn btn-danger">Signaler</button>
-                        <button type="button" class="btn btn-secondary">Fermer</button>
-                    </form>
+                
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Signaler</button>
+                
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="<?=URL?>chapitre/signal" method=post>
+                                <div class="modal-body">
+                                    Voulez-vous signaler ce commentaire?
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="hidden" value="<?=$comment->get_id()?>"/>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                    <button type="submit" class="btn btn-danger">Signaler</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </h5>
 
