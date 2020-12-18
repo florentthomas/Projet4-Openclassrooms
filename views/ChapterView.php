@@ -48,9 +48,9 @@ require('views/navView.php');
                 <?=htmlspecialchars($comment->get_last_name()) ?>
                 <?=htmlspecialchars($comment->get_date_comment()->format('d/m/Y à h:i'))?>
                 
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Signaler</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#signal_comment_<?=$comment->get_id()?>">Signaler</button>
                 
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="signal_comment_<?=$comment->get_id()?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -58,12 +58,12 @@ require('views/navView.php');
                                 <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="<?=URL?>chapitre/signal" method=post>
+                            <form action="<?=URL?>chapitre/<?=$chapter_item->get_id()?>/signal" method=post>
                                 <div class="modal-body">
                                     Voulez-vous signaler ce commentaire?
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="hidden" value="<?=$comment->get_id()?>"/>
+                                    <input type="hidden" name="id_comment" value="<?=$comment->get_id()?>"/>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                                     <button type="submit" class="btn btn-danger">Signaler</button>
                                 </div>

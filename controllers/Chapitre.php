@@ -76,4 +76,24 @@ class Chapitre{
             $this->_view->generate(array('error_message'=>$error_msg));
         }
     }
+
+    public function signal(){
+        try{
+            if(isset($_POST['id_comment'])){
+                $this->_commentManager->signal_comment($_POST['id_comment']);
+                header('Location:'.URL."chapitre/".$this->_chapterManager->get_chapter($this->_url[1])->get_id());
+            }
+            else{
+                throw new \Exception('Identifiant du commentaire non valide, impossible de le signaler');
+                
+            }
+
+        }
+        catch(\Exception $e){
+            $error_msg=$e->getMessage();
+            $this->_view=new View('errorView','Erreur');
+            $this->_view->generate(array('error_message'=>$error_msg));
+        }
+        
+    }
 }

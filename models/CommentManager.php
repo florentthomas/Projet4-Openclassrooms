@@ -48,4 +48,11 @@ class CommentManager extends Manager{
                             'chapter_id' => $comment->get_chapter_id()));
     }
 
+    public function signal_comment($id_comment){
+        $sql='UPDATE comments SET signal_comment= signal_comment + 1 WHERE id= :id_comment';
+
+        $req=$this->bdd()->prepare($sql);
+        $req->execute(Array('id_comment' => $id_comment));
+    }
+
 }
