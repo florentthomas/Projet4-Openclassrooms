@@ -1,5 +1,5 @@
 <?php
-//CKE editor
+
 namespace Projet4\Controller;
 
 use \Projet4\view\view;
@@ -11,7 +11,11 @@ class Admin{
     private $_view;
 
     public function index(){
-        $this->set_view();
+        if(!isset($_SESSION['user'])){
+            $this->_view=new View('ConnectionView','Se connecter');
+            $this->_view->generate();
+        }
+        // $this->set_view();
     }
 
     public function set_view(){
