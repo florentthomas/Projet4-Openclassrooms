@@ -34,8 +34,28 @@ if(isset($_SESSION['user'])){
 </section>
 
 <section id="commentaires_signales">
-  <h3>Vous avez commentaire(s) signalé(s)</h3>
-
+  <h3>Vous avez <?=isset($comments_signal) ? count($comments_signal) : '0'?> commentaire(s) signalé(s)</h3>
+<?php
+if(isset($comments_signal)){
+  foreach($comments_signal as $comment_signal){
+?>
+  <span>Commentaire signalé <?=htmlspecialchars($comment_signal->get_signal_comment())?> fois</span>
+  <div class="card">
+  <div class="card-header">
+    <?=htmlspecialchars($comment_signal->get_first_name())?>
+    <?=htmlspecialchars($comment_signal->get_last_name())?>
+    <?=htmlspecialchars($comment_signal->get_date_comment()->format('d/m/Y à h:i'))?>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><?=htmlspecialchars($comment_signal->get_comment())?></p>
+    <a href="#" class="btn btn-primary">Approuver le commentaire</a>
+    <a href="#" class="btn btn-danger">Supprimer le commentaire</a>
+  </div>
+</div>
+<?php
+  }
+}
+?>
 </section>
 
 <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>

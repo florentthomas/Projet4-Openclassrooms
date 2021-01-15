@@ -13,6 +13,7 @@ class Comment{
             $_last_name,
             $_date_comment,
             $_chapter_id,
+            $_signal_comment,
             $_comment;
 
     public function __construct(Array $data){
@@ -47,6 +48,12 @@ class Comment{
         }
     }
 
+    public function set_signal_comment($signal_comment){
+        if(is_numeric($signal_comment)){
+            $this->_signal_comment=$signal_comment;
+        }
+    }
+
     public function set_comment($comment){
         if(is_string($comment)){
             $this->_comment=$comment;
@@ -71,6 +78,10 @@ class Comment{
 
     public function get_chapter_id(){
         return $this->_chapter_id;
+    }
+
+    public function get_signal_comment(){
+        return $this->_signal_comment;
     }
 
     public function get_comment(){

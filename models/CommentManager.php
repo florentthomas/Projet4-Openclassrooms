@@ -29,6 +29,26 @@ class CommentManager extends Manager{
         }
         return;
     }
+
+    public function get_comments_signal(){
+        $sql="SELECT * FROM comments WHERE signal_comment >= 1";
+
+        $req=$this->bdd()->query($sql);
+        while($data=$req->fetch(\PDO::FETCH_ASSOC)){
+            $comments_signal[]=new Comment($data);
+        }
+
+        if(isset($comments_signal) && $comments_signal != null){
+            foreach($comments_signal as $comment_signal){
+                $comment_signal->set_date_comment(new \DateTime($comment_signal->get_date_comment()));
+            }
+            
+            return $comments_signal;
+        }
+        
+        return;
+        
+    }
     
     public function count_comment($id){
         $sql="SELECT COUNT(*) FROM comments WHERE chapter_id=$id";

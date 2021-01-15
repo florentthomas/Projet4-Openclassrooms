@@ -5,9 +5,13 @@ namespace Projet4\Controller;
 use \Projet4\view\view;
 use \Projet4\Model\User;
 use \Projet4\Model\UserManager;
+use \Projet4\Model\CommentManager;
+use \Projet4\Model\ChapterManager;
 
 require(ROOT.'views/View.php');
 require(ROOT.'models/UserManager.php');
+require(ROOT.'models/CommentManager.php');
+
 
 
 class Admin{
@@ -22,8 +26,11 @@ class Admin{
             $this->_view->generate();   
         }
         else{
+            $comment_manager=new CommentManager;
+            $comments_signal=$comment_manager->get_comments_signal();
+            //var_dump($comments_signal);
             $this->_view=new View('AdminView','Administration');
-            $this->_view->generate();
+            $this->_view->generate(Array('comments_signal'=>$comment_manager->get_comments_signal()));
         }
     }
 
