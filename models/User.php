@@ -23,7 +23,7 @@ class User{
         }
     }
 
-    public function set_password($password){
+    public function set_password_user($password){
         $password=password_hash($password, PASSWORD_DEFAULT);
         $this->_password=$password;
     }
