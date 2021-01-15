@@ -36,3 +36,15 @@ header{
     font-weight: bold;
     color:red;
 }
+
+#commentaires_signales{
+    margin:5%;
+}
+
+h3{
+    text-align: center;
+}
+
+#commentaires_signales .card{
+    margin-bottom: 4%;
+}
