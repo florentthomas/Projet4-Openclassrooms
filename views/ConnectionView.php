@@ -1,5 +1,3 @@
-<?php
-?>
 
 <form id="page_connection_admin" action="<?=URL?>admin/connection" method="post">
   <div class="form-group">
@@ -17,3 +15,11 @@
   </div>
   <button type="submit" class="btn btn-primary">Se connecter</button>
 </form>
+
+<?php
+if(isset($error_connection)){
+?>
+<p id="error_connection">Mot de passe ou email invalide</p>
+<?php
+}
+?>
