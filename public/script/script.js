@@ -4,7 +4,6 @@ const btn_top=document.getElementById("scroll_top");
 window.addEventListener("scroll",function(){
     if(window.scrollY > 25){
         btn_top.style.display="block";
-        console.log("test");
     }
     else{
         btn_top.style.display="none";
@@ -23,10 +22,5 @@ function animationScroll(){
     }  
 }
 
-//form comment signal
-
-const signalCommentElt=document.getElementById("signal_comment");
-const signalBtn=document.getElementById("signal");
-const bodyElt=document.querySelector("body");
 
 

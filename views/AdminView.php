@@ -64,3 +64,4 @@ if(isset($comments_signal)){
 <?php
 }
 ?>
+<span id="scroll_top"><i class="fas fa-arrow-up"></i></span>
