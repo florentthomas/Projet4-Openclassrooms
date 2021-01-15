@@ -30,3 +30,9 @@ header{
     padding: 5%;
     border-radius: 10px;
 }
+
+#error_connection{
+    text-align: center;
+    font-weight: bold;
+    color:red;
+}
