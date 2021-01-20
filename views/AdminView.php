@@ -29,7 +29,34 @@ if(isset($_SESSION['user'])){
 </section>
 
 <section id="mofifier_chapitre">
-
+  <h3>Modifier un chapitre</h3>
+  <?php
+    if(isset($chapters)){
+      //var_dump($chapters);
+      foreach($chapters as $chapter){
+  ?>
+        <div class="card">
+        <div class="card-header">
+          <?=htmlspecialchars($chapter->get_title())?>
+           | Auteur: <?=htmlspecialchars($chapter->get_author())?>
+          | Date: <?=htmlspecialchars($chapter->get_date_create()->format('d/m/Y à h:i'))?>
+          <?php
+          if($chapter->get_date_create() != $chapter->get_date_update()){
+          ?>
+            | Date de modification: <?=htmlspecialchars($chapter->get_date_update()->format('d/m/Y à h:i'))?>
+          <?php
+          }
+          ?>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><?=htmlspecialchars(substr($chapter->get_content(),0,300))?></p>
+          
+        </div>
+      </div>
+  <?php
+      }
+    }
+  ?>
 
 </section>
 

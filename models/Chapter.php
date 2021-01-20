@@ -44,15 +44,11 @@ class ChapterModel{
     }
 
     public function set_date_create($date_create){
-        if(is_a($date_create,'DateTime')){
             $this->_date_create=$date_create;
-        }
     }
 
     public function set_date_update($date_update){
-        if(is_a($date_update,'DateTime')){
             $this->_date_update=$date_update;
-        }
     }
 
     public function get_title(){

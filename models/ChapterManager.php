@@ -8,7 +8,7 @@ use \Projet4\Model\Manager;
 
 
 require(ROOT.'models/chapter.php');
-require(ROOT.'models/Manager.php');
+require_once(ROOT.'models/Manager.php');
 
 class ChapterManager extends Manager{
 
@@ -24,6 +24,7 @@ class ChapterManager extends Manager{
             $chapter->set_date_create(new \DateTime($chapter->get_date_create()));
             $chapter->set_date_update(new \DateTime($chapter->get_date_update()));
         }
+        
 
         return $chapters;
     }
