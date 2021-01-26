@@ -49,7 +49,7 @@ if(isset($_SESSION['user'])){
           ?>
         </div>
         <div class="card-body">
-          <p class="card-text"><?=htmlspecialchars(substr($chapter->get_content(),0,300))?></p>
+          <p class="card-text"><?=substr($chapter->get_content(),0,300)?></p>
           
         </div>
         <form method="post" action="<?=URL?>admin/modify_chapter">

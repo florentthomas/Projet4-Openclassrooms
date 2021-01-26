@@ -41,15 +41,17 @@ class ChapterManager extends Manager{
         
     }
 
-    public function update_chapter(Chapter $chapter){
+    public function update_chapter(ChapterModel $chapter){
         $sql="UPDATE chapters 
               SET title=:title, content=:content, author=:author, date_update=NOW()
               WHERE id=:id";
+        
+        $req=$this->bdd()->prepare($sql);
 
-        $req=$this->_bdd->prepare(Array("title" => $chapter->get_title(),
-                                        "content" => $chapter->get_content(),
-                                        "author" => $chapter->get_author()));
-        $req->execute($sql);
+        $req->execute(Array("title" => $chapter->get_title(),
+                            "content" => $chapter->get_content(),
+                            "author" => $chapter->get_author(),
+                            "id" => $chapter->get_id()));
     }
 
     public function add_chapter(Chapter $chapter){
@@ -67,5 +69,14 @@ class ChapterManager extends Manager{
         $req=$this->bdd()->query($sql);
         $count_chapters=$req->fetch();
         return $count_chapters;
+    }
+
+    public function chapter_exists($id){
+        $count_chapters=$this->count_chapters();
+        if($id > 0 && $id <= $count_chapters[0]){
+            return true;
+        }
+
+        return false;
     }
 }

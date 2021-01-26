@@ -24,7 +24,7 @@ abstract class Manager{
         return $req;
     }
 
-    protected function delete($table,$id){
+    public function delete($table,$id){
         $sql="DELETE FROM $table WHERE id=:id";
         $req=$this->bdd()->prepare($sql);
         $req->execute(Array("id" => $id));

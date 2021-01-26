@@ -4,7 +4,7 @@ require('views/navView.php');
 
 <article class="p-5">
     <h1 class="text-center"><?=htmlspecialchars($chapter_item->get_title())?></h1>
-    <p><?=htmlspecialchars($chapter_item->get_content())?></p>
+    <p><?=$chapter_item->get_content()?></p>
 </article>
 
 

@@ -33,7 +33,7 @@ include('views/navView.php');
   <div class="card m-5 shadow">
     <div class="card-body">
       <h5 class="card-title"><?=htmlspecialchars($chapter->get_title())?></h5>
-      <p class="card-text"><?=htmlspecialchars(substr($chapter->get_content(),0,300)).' ...'?></p>
+      <p class="card-text"><?=substr($chapter->get_content(),0,300).' ...'?></p>
       <a href="chapitre/<?=htmlspecialchars($chapter->get_id())?>  " class="btn btn-primary">Lire le chapitre</a>
     </div>
   </div>

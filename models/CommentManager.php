@@ -75,4 +75,12 @@ class CommentManager extends Manager{
         $req->execute(Array('id_comment' => $id_comment));
     }
 
+    public function delete_comments($chapter_id){
+        $sql='DELETE FROM comments WHERE chapter_id= :chapter_id';
+
+        $req=$this->bdd()->prepare($sql);
+
+        $req->execute(Array('chapter_id' => $chapter_id));
+    }
+
 }

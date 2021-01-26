@@ -7,11 +7,13 @@ use \Projet4\Model\User;
 use \Projet4\Model\UserManager;
 use \Projet4\Model\CommentManager;
 use \Projet4\Model\ChapterManager;
+use \Projet4\Model\ChapterModel;
 
 require(ROOT.'views/View.php');
 require(ROOT.'models/UserManager.php');
 require(ROOT.'models/CommentManager.php');
 require(ROOT.'models/ChapterManager.php');
+require_once(ROOT.'models/Chapter.php');
 
 
 class Admin{
@@ -59,9 +61,8 @@ class Admin{
     public function modify_chapter(){
         try{
             $chapterManager=new ChapterManager;
-            $count_chapters=$chapterManager->count_chapters();
-        
-            if(isset($_POST['chapter_id']) && $_POST['chapter_id'] > 0 && $_POST['chapter_id'] <= $count_chapters[0]){
+           
+            if(isset($_POST['chapter_id']) && $_POST['chapter_id'] > 0 && $chapterManager->chapter_exists($_POST['chapter_id'])){
                 $this->_view=new View('Modify_chapterView','Modifier un chapitre');
                 $this->_view->generate(array('chapter' =>$chapterManager->get_chapter($_POST['chapter_id'])));
             }
@@ -74,8 +75,56 @@ class Admin{
             $this->_view=new View('errorView','Erreur');
             $this->_view->generate(array('error_message'=>$error_msg));
         }
-        
-        
+    }
+
+    public function apply_modification(){
+        try{
+            if(isset($_POST['id']) && !empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['author'])){
+                $chapterManager=new ChapterManager;
+                if($chapterManager->chapter_exists($_POST['id'])){
+                    $data=Array('id' =>$_POST['id'],
+                                'title' =>$_POST['title'],
+                                'content' =>$_POST['content'],
+                                'author' =>$_POST['author']);
+                   
+                    $chapterManager->update_chapter(new ChapterModel($data));
+                    header('Location:'.URL.'admin');
+                }
+                else{
+                    Throw new \Exception('Le chapitre n\'existe pas');
+                }
+            }
+            else{
+                Throw new \Exception('Modification impossible! Tous les champs ne sont pas remplis');
+            }
+        }
+
+        catch(\Exception $e){
+            $error_msg=$e->getMessage();
+            $this->_view=new View('errorView','Erreur');
+            $this->_view->generate(array('error_message'=>$error_msg));
+        }
+    }
+
+    public function delete_chapter(){
+
+        try{
+            $chapterManager=new ChapterManager;
+            $commentManager=new CommentManager;
+            if(isset($_POST['id']) && $chapterManager->chapter_exists($_POST['id'])){
+                $chapterManager->delete('chapters',$_POST['id']);
+                $commentManager->delete_comments($_POST['id']);
+                header('Location:'.URL.'admin');
+            }
+            else{
+                Throw new \Exception('Le chapitre n\'existe pas');
+            }
+        }
+        catch(\Exception $e){
+            $error_msg=$e->getMessage();
+            $this->_view=new View('errorView','Erreur');
+            $this->_view->generate(array('error_message'=>$error_msg));
+        }
     }
 
 }
