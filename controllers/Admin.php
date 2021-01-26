@@ -56,4 +56,26 @@ class Admin{
         header('Location:'.URL.'admin');
     }
 
+    public function modify_chapter(){
+        try{
+            $chapterManager=new ChapterManager;
+            $count_chapters=$chapterManager->count_chapters();
+        
+            if(isset($_POST['chapter_id']) && $_POST['chapter_id'] > 0 && $_POST['chapter_id'] <= $count_chapters[0]){
+                $this->_view=new View('Modify_chapterView','Modifier un chapitre');
+                $this->_view->generate(array('chapter' =>$chapterManager->get_chapter($_POST['chapter_id'])));
+            }
+            else{
+                Throw new \Exception('Le chapitre n\'existe pas');
+            }
+        }
+        catch(\Exception $e){
+            $error_msg=$e->getMessage();
+            $this->_view=new View('errorView','Erreur');
+            $this->_view->generate(array('error_message'=>$error_msg));
+        }
+        
+        
+    }
+
 }

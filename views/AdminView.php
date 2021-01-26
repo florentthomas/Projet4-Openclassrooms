@@ -22,7 +22,7 @@ if(isset($_SESSION['user'])){
       <label for="title">Titre: </label><input type="text" id="title" name="title" required>
       <textarea name="create_chapter" cols="30" rows="10"></textarea>
       <label for="author">Auteur: </label><input type="text" id="author" name="author" required>
-      <input type="submit" value="Valider">
+      <input type="submit" value="Valider"/>
   </form>
 
 
@@ -52,6 +52,10 @@ if(isset($_SESSION['user'])){
           <p class="card-text"><?=htmlspecialchars(substr($chapter->get_content(),0,300))?></p>
           
         </div>
+        <form method="post" action="<?=URL?>admin/modify_chapter">
+          <input type="hidden" name="chapter_id" value="<?=$chapter->get_id()?>"/>
+          <button class="btn btn-primary" type="submit">Modifier l'article</button>
+        </form>
       </div>
   <?php
       }
