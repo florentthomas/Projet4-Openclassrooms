@@ -21,19 +21,25 @@ if(isset($_SESSION['user'])){
 
 <section id="modifier_un_chapitre">
   <form method="post" action="<?=URL?>admin/apply_modification">
+    <div class="form-group">
+      <label for="title">Titre</label>
+      <input type="text" class="form-control" id="title" value="<?=$chapter->get_title()?>" required/>
+    </div>
     <input type="hidden" name="id" value="<?=$chapter->get_id()?>"/>    
-    <label for="title">Titre: </label><input type="text" id="title" value="<?=$chapter->get_title()?>" name="title" required>
     <textarea name="content" cols="30" rows="10"><?=$chapter->get_content()?></textarea>
-    <label for="author">Auteur: </label><input type="text" id="author" value="<?=$chapter->get_author()?>" name="author" required>
-    <input type="submit" value="Modifier le chapitre"/>
+    <div class="form-group">
+      <label for="author">Auteur</label>
+      <input type="text" class="form-control" id="author" value="<?=$chapter->get_author()?>" required/>
+    </div>
+    <button type="submit" class="btn btn-primary">Modifier le chapitre</button>
   </form>
 </section>
 
-
-<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+<div class="text-center">
+<button type="button" class="btn btn-danger center-block" data-toggle="modal" data-target="#exampleModal">
   Supprimer ce chapitre
 </button>
-
+</div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
