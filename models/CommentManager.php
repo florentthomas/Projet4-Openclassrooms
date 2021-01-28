@@ -57,6 +57,26 @@ class CommentManager extends Manager{
         return $count_comment;
     }
 
+    public function comment_exists($id){
+        $sql="SELECT id FROM comments WHERE id=:id";
+
+        $req=$this->bdd()->prepare($sql);
+
+        $req->execute(Array('id'=>$id));
+
+        $response=$req->fetch(\PDO::FETCH_ASSOC);
+
+        return $response;
+    }
+
+    public function approve_comment($id){
+        $sql="UPDATE comments SET signal_comment = 0 WHERE id=:id";
+
+        $req=$this->bdd()->prepare($sql);
+
+        $req->execute(Array("id" => $id));
+    }
+
     public function add_comment(Comment $comment){
         $sql='INSERT INTO comments (first_name,last_name,date_comment,comment,chapter_id)
               VALUES(:first_name,:last_name,NOW(),:comment,:chapter_id)

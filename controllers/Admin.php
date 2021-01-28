@@ -127,4 +127,36 @@ class Admin{
         }
     }
 
+    public function comment_signal(){
+        try{
+            $commentManager=new CommentManager;
+            
+            if(isset($_POST['id'])){
+
+                if(isset($_POST['supprimer']) && $commentManager->comment_exists($_POST['id']) != false){
+                   
+                    $commentManager->delete('comments',$_POST['id']);
+                    header('Location:'.URL.'admin');
+                }
+                elseif(isset($_POST['approuver'])){
+                    $commentManager->approve_comment($_POST['id']);
+                    header('Location:'.URL.'admin');
+                }
+                else{
+                    Throw new \Exception('Erreur veuillez renouveller l\'opération');
+                }
+            }
+
+            else{
+                Throw new \Exception('Commentaire non identifié');
+            }
+            
+        }
+        catch(\Exception $e){
+            $error_msg=$e->getMessage();
+            $this->_view=new View('errorView','Erreur');
+            $this->_view->generate(array('error_message'=>$error_msg));
+        }
+    }
+
 }

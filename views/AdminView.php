@@ -79,8 +79,11 @@ if(isset($comments_signal)){
   </div>
   <div class="card-body">
     <p class="card-text"><?=htmlspecialchars($comment_signal->get_comment())?></p>
-    <a href="#" class="btn btn-primary">Approuver le commentaire</a>
-    <a href="#" class="btn btn-danger">Supprimer le commentaire</a>
+    <form method="post" action="<?=URL?>admin/comment_signal">
+      <input type="hidden" name="id" value="<?=$comment_signal->get_id()?>"/>
+      <button type="submit" class="btn btn-primary" name="approuver">Approuver le commentaire</button>
+      <button type="submit" class="btn btn-danger" name="supprimer">Supprimer le commentaire</button>
+    </form>
   </div>
 </div>
 <?php
