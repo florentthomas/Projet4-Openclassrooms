@@ -18,11 +18,18 @@ if(isset($_SESSION['user'])){
   <a href="<?=URL?>admin/disconnect">Se déconnecter</a>
 </nav>
 <section id="ecrire_un_chapitre">
-  <form>
-      <label for="title">Titre: </label><input type="text" id="title" name="title" required>
-      <textarea name="create_chapter" cols="30" rows="10"></textarea>
-      <label for="author">Auteur: </label><input type="text" id="author" name="author" required>
-      <input type="submit" value="Valider"/>
+  <h3>Ajouter un nouveau chapitre</h3>
+  <form method="post" action="<?=URL?>admin/add_chapter">
+      <div class="form-group">
+        <label for="title">Titre</label>
+        <input type="text" class="form-control" id="title" name="title" required>
+      </div>
+      <textarea name="content" cols="30" rows="10"></textarea>
+      <div class="form-group">
+        <label for="author">Auteur</label>
+        <input type="text" class="form-control" id="author" name="author" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Valider</button>
   </form>
 
 
@@ -93,7 +100,7 @@ if(isset($comments_signal)){
 </section>
 
 <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
-<script>CKEDITOR.replace("create_chapter")</script>    
+<script>CKEDITOR.replace("content")</script>    
 
 <?php
 }

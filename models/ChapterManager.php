@@ -54,14 +54,15 @@ class ChapterManager extends Manager{
                             "id" => $chapter->get_id()));
     }
 
-    public function add_chapter(Chapter $chapter){
+    public function add_chapter(ChapterModel $chapter){
         $sql="INSERT INTO chapters (title,content,author,date_create,date_update)
               VALUE(:title,:content,:author,NOW(),NOW())";
 
-        $req=$this->_bdd->prepare(Array("title" => $chapter->get_title(),
-                                        "content" => $chapter->get_content(),
-                                        "author" => $chapter->get_author()));
-        $req->execute($sql);
+        $req=$this->bdd()->prepare($sql);
+
+        $req->execute(Array("title" => $chapter->get_title(),
+                            "content" => $chapter->get_content(),
+                            "author" => $chapter->get_author()));
     }
 
     public function count_chapters(){

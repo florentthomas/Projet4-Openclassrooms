@@ -159,4 +159,33 @@ class Admin{
         }
     }
 
+    public function add_chapter(){
+        try
+        {
+            if(!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['content'])){
+                
+                $chapterManager=new ChapterManager;
+
+                $data=Array('title' => $_POST['title'], 'author' => $_POST['author'], 'content' => $_POST['content']);
+
+                $chapter=new ChapterModel($data);
+
+                $chapterManager->add_chapter($chapter);
+
+                header('Location:'.URL.'admin');
+
+
+            }
+            else{
+                throw new \Exception('Les champs ne sont pas saisis');
+                
+            }
+        }
+
+        catch(\Exception $a){
+            $error_msg=$e->getMessage();
+            $this->_view=new View('errorView','Erreur');
+            $this->_view->generate(array('error_message'=>$error_msg));
+        }
+    }
 }
