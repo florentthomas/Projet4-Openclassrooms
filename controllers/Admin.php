@@ -79,6 +79,7 @@ class Admin{
 
     public function apply_modification(){
         try{
+           
             if(isset($_POST['id']) && !empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['author'])){
                 $chapterManager=new ChapterManager;
                 if($chapterManager->chapter_exists($_POST['id'])){

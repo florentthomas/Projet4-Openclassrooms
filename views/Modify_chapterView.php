@@ -23,13 +23,13 @@ if(isset($_SESSION['user'])){
   <form method="post" action="<?=URL?>admin/apply_modification">
     <div class="form-group">
       <label for="title">Titre</label>
-      <input type="text" class="form-control" id="title" value="<?=$chapter->get_title()?>" required/>
+      <input type="text" class="form-control" id="title" name="title" value="<?=$chapter->get_title()?>" required/>
     </div>
     <input type="hidden" name="id" value="<?=$chapter->get_id()?>"/>    
     <textarea name="content" cols="30" rows="10"><?=$chapter->get_content()?></textarea>
     <div class="form-group">
       <label for="author">Auteur</label>
-      <input type="text" class="form-control" id="author" value="<?=$chapter->get_author()?>" required/>
+      <input type="text" class="form-control" id="author" name="author" value="<?=$chapter->get_author()?>" required/>
     </div>
     <button type="submit" class="btn btn-primary">Modifier le chapitre</button>
   </form>
