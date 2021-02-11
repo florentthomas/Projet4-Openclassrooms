@@ -23,12 +23,17 @@ class Router{
                     require(ROOT.$controller_file);       
                     $this->_controller=new $controller($url);
 
-                    if(isset($url[1]) && !is_numeric($url[1])){
+                    var_dump($url[1]);
+                    
+                    if(isset($url[1])){
                         $action=$url[1];
                     }
-                    elseif(isset($url[2])){
-                        $action=$url[2];
-                    }
+                    // if(isset($url[1]) && !is_numeric($url[1])){
+                    //     $action=$url[1];
+                    // }
+                    // elseif(isset($url[2])){
+                    //     $action=$url[2];
+                    // }
 
                     if(isset($action)){
                         $this->_controller->$action();

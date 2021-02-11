@@ -73,11 +73,15 @@ class ChapterManager extends Manager{
     }
 
     public function chapter_exists($id){
-        $count_chapters=$this->count_chapters();
-        if($id > 0 && $id <= $count_chapters[0]){
-            return true;
-        }
+        
+        $sql="SELECT id FROM chapters WHERE id=:id";
 
-        return false;
+        $req=$this->bdd()->prepare($sql);
+
+        $req->execute(Array('id'=>$id));
+
+        $response=$req->fetch(\PDO::FETCH_ASSOC);
+
+        return $response;
     }
 }
