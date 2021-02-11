@@ -23,22 +23,23 @@ class Chapitre{
         $this->_url=$url;
     }
 
-    public function index(){
+    public function view(){
         try{
            
-            $id_chapter=$this->_url[1];
+            $id_chapter=$this->_url[2];
+            var_dump($id_chapter);
             $count_chapters=$this->_chapterManager->count_chapters();
 
             //controle du parametre $_GET representant l'id du chapitre
-            if(is_numeric($id_chapter) && $id_chapter>0 && $id_chapter <= $count_chapters[0]){
+            if(is_numeric($id_chapter)){
 
                 //Definition de la page vue, envoie des données sous forme de tableau
-                $this->_view=new View('chapterView',$this->_chapterManager->get_chapter($this->_url[1])->get_title());
+                $this->_view=new View('chapterView',$this->_chapterManager->get_chapter($id_chapter)->get_title());
 
-                $this->_view->generate(array('chapter_item'=>$this->_chapterManager->get_chapter($this->_url[1]),
+                $this->_view->generate(array('chapter_item'=>$this->_chapterManager->get_chapter($id_chapter),
                                      'chapters' => $this->_chapterManager->get_chapters(),
-                                     'count_comment' => $this->_commentManager->count_comment($this->_url[1]),
-                                     'comments' => $this->_commentManager->get_comments($this->_url[1])));
+                                     'count_comment' => $this->_commentManager->count_comment($id_chapter),
+                                     'comments' => $this->_commentManager->get_comments($id_chapter)));
             }
 
             else{
