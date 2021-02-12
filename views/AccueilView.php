@@ -28,16 +28,20 @@ include('views/navView.php');
   <p class="text-center">Découvrez les premiers chapitres de mon nouveau roman <span class="font-weight-bold">Un billet simple pour l'Alaska</span></p>
   
   <?php
+  $i=0;
   foreach($chapters as $chapter){
   ?>
   <div class="card m-5 shadow">
     <div class="card-body">
       <h5 class="card-title"><?=htmlspecialchars($chapter->get_title())?></h5>
       <p class="card-text"><?=substr($chapter->get_content(),0,300).' ...'?></p>
-      <a href="chapitre/<?=htmlspecialchars($chapter->get_id())?>  " class="btn btn-primary">Lire le chapitre</a>
+    
+      <a href="chapitre/view/<?=htmlspecialchars($chapter->get_id())?>/<?=$name_chapters_url[$i]?> " class="btn btn-primary">Lire le chapitre</a>
+       
     </div>
   </div>
   <?php
+    ++$i;
   }
   ?>
 

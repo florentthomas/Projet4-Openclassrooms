@@ -28,8 +28,6 @@ class Chapitre{
            
             $id_chapter=$this->_url[2];
 
-            var_dump($this->_chapterManager->chapter_exists($id_chapter));
-           
             //controle du parametre $_GET representant l'id du chapitre
             if(is_numeric($id_chapter) && $this->_chapterManager->chapter_exists($id_chapter)){
 
