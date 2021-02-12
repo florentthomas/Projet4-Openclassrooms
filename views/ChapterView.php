@@ -8,7 +8,7 @@ require('views/navView.php');
 </article>
 
 
-<form method='post' action="<?=URL?>chapitre/<?=$chapter_item->get_id()?>/comment" class="p-5">
+<form method='post' action="<?=URL?>chapitre/comment/<?=$chapter_item->get_id()?>" class="p-5">
 
     <input type="hidden" value="<?=$chapter_item->get_id()?>" name="chapter_id"/>
 
