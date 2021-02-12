@@ -36,9 +36,4 @@ class Accueil{
     
     }
 
-    public function set_view(){
-        $this->_view=new View('AccueilView','Jean Forteroche');
-        $this->_view->generate(array('chapters' => $this->_chapterManager->get_chapters()));
-    }
-
 }

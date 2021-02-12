@@ -23,20 +23,17 @@ class Router{
                     require(ROOT.$controller_file);       
                     $this->_controller=new $controller($url);
 
-                    var_dump($url[1]);
-                    
                     if(isset($url[1])){
                         $action=$url[1];
                     }
-                    // if(isset($url[1]) && !is_numeric($url[1])){
-                    //     $action=$url[1];
-                    // }
-                    // elseif(isset($url[2])){
-                    //     $action=$url[2];
-                    // }
-
+ 
                     if(isset($action)){
-                        $this->_controller->$action();
+                        if(method_exists($controller,$action)){
+                            $this->_controller->$action();
+                        }
+                        else{
+                            throw new Exception('La page demandée n\'existe pas');
+                        }
                     }
                     else{
                         $this->_controller->index();
@@ -58,7 +55,7 @@ class Router{
         }
         catch(Exception $e){
             $error_msg=$e->getMessage();
-            require(ROOT.'views/View.php');
+            require_once(ROOT.'views/View.php');
             $this->_view=new View('errorView','Erreur');
             $this->_view->generate(array('error_message'=>$error_msg));
         }
