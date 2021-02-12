@@ -28,7 +28,7 @@
             <?php
             foreach($chapters as $chapter){
             ?>
-            <a class="dropdown-item" href='<?=URL?>chapitre/<?=htmlspecialchars($chapter->get_id())?>'><?=htmlspecialchars($chapter->get_title())?></a>
+            <a class="dropdown-item" href='<?=URL?>chapitre/view/<?=htmlspecialchars($chapter->get_id())?>'><?=htmlspecialchars($chapter->get_title())?></a>
             <?php
               
             }
