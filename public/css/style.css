@@ -1,8 +1,3 @@
-header h1{
-    position:absolute;
-    top:20%;
-    right: 15%;
-}
 
 header{
     background-image: url("../images/montagne.jpg");
@@ -11,9 +6,6 @@ header{
     height:500px;
 }
 
-#page_connection_admin{
-    margin:5%;
-}
 
 #scroll_top{
     position: fixed;
@@ -39,18 +31,6 @@ header{
     color:red;
 }
 
-#commentaires_signales{
-    margin:5%;
-}
-
 h3{
     text-align: center;
-}
-
-#commentaires_signales .card{
-    margin-bottom: 4%;
-}
-
-#modifier_un_chapitre{
-    padding: 5%;
 }

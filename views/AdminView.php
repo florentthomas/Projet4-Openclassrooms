@@ -5,7 +5,7 @@ if(isset($_SESSION['user'])){
 ?>
 
 
-<section id="ecrire_un_chapitre">
+<section class="m-5" id="ecrire_un_chapitre">
   <h3>Ajouter un nouveau chapitre</h3>
   <form method="post" action="<?=URL?>admin/add_chapter">
       <div class="form-group">
@@ -23,14 +23,13 @@ if(isset($_SESSION['user'])){
 
 </section>
 
-<section id="modifier_chapitre">
+<section class="m-5" id="modifier_chapitre">
   <h3>Modifier un chapitre</h3>
   <?php
     if(isset($chapters)){
-      //var_dump($chapters);
       foreach($chapters as $chapter){
   ?>
-        <div class="card">
+        <div class="card mb-4">
         <div class="card-header">
           <?=htmlspecialchars($chapter->get_title())?>
            | Auteur: <?=htmlspecialchars($chapter->get_author())?>
@@ -49,7 +48,7 @@ if(isset($_SESSION['user'])){
         </div>
         <form method="post" action="<?=URL?>admin/modify_chapter">
           <input type="hidden" name="chapter_id" value="<?=$chapter->get_id()?>"/>
-          <button class="btn btn-primary" type="submit">Modifier l'article</button>
+          <button class="btn btn-primary m-3" type="submit">Modifier l'article</button>
         </form>
       </div>
   <?php
@@ -59,14 +58,14 @@ if(isset($_SESSION['user'])){
 
 </section>
 
-<section id="commentaires_signales">
+<section class="m-5" id="commentaires_signales">
   <h3>Vous avez <?=isset($comments_signal) ? count($comments_signal) : '0'?> commentaire(s) signalé(s)</h3>
 <?php
 if(isset($comments_signal)){
   foreach($comments_signal as $comment_signal){
 ?>
   <span>Commentaire signalé <?=htmlspecialchars($comment_signal->get_signal_comment())?> fois</span>
-  <div class="card">
+  <div class="card mb-4">
   <div class="card-header">
     <?=htmlspecialchars($comment_signal->get_first_name())?>
     <?=htmlspecialchars($comment_signal->get_last_name())?>

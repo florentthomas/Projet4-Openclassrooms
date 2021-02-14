@@ -4,7 +4,7 @@ if(isset($_SESSION['user'])){
   include('views/navAdmin.php');
 ?>
 
-<section id="modifier_un_chapitre">
+<section id="modifier_un_chapitre" class="m-5">
   <form method="post" action="<?=URL?>admin/apply_modification">
     <div class="form-group">
       <label for="title">Titre</label>
@@ -20,7 +20,7 @@ if(isset($_SESSION['user'])){
   </form>
 </section>
 
-<div class="text-center">
+<div class="text-center mb-5">
 <button type="button" class="btn btn-danger center-block" data-toggle="modal" data-target="#exampleModal">
   Supprimer ce chapitre
 </button>
