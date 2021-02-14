@@ -35,6 +35,15 @@
             ?>
         </div>
       </li>
+      <?php
+      if(isset($_SESSION['user'])){
+      ?>
+      <li class="nav-item">
+        <a class="nav-link" href="<?=URL?>admin">Administration</a>
+      </li>
+      <?php
+      }
+      ?>
     </ul>
   </div>
 </nav>

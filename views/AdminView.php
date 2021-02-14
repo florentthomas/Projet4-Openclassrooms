@@ -10,12 +10,14 @@ if(isset($_SESSION['user'])){
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="#">Créer un nouveau chapitre</a>
-      <a class="nav-item nav-link" href="#">Modifier un chapitre</a>
-      <a class="nav-item nav-link" href="#">commentaires signalés</a>
+      <a class="nav-item nav-link" href="<?=URL?>admin#ecrire_un_chapitre">Créer un nouveau chapitre</a>
+      <a class="nav-item nav-link" href="<?=URL?>admin#modifier_chapitre">Modifier un chapitre</a>
+      <a class="nav-item nav-link" href="<?=URL?>admin#commentaires_signales">commentaires signalés</a>
+      <a class="nav-item nav-link" href="<?=URL?>">Revenir au blog</a>
+      <a class="nav-item nav-link" href="<?=URL?>admin/disconnect">Se déconnecter</a>
     </div>
   </div>
-  <a href="<?=URL?>admin/disconnect">Se déconnecter</a>
+  
 </nav>
 <section id="ecrire_un_chapitre">
   <h3>Ajouter un nouveau chapitre</h3>
@@ -35,7 +37,7 @@ if(isset($_SESSION['user'])){
 
 </section>
 
-<section id="mofifier_chapitre">
+<section id="modifier_chapitre">
   <h3>Modifier un chapitre</h3>
   <?php
     if(isset($chapters)){

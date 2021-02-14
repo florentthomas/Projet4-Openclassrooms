@@ -9,12 +9,9 @@
     <label for="password">Mot de passe</label>
     <input type="password" name="password" class="form-control" id="password" required>
   </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Se souvenir de moi</label>
-  </div>
   <button type="submit" class="btn btn-primary">Se connecter</button>
 </form>
+<div><a href="<?=URL?>">Revenir au blog</a></div>
 
 <?php
 if(isset($error_connection)){
