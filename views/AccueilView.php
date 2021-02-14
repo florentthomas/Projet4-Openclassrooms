@@ -3,8 +3,6 @@ include('views/navView.php');
 ?>
 
 <header>
-    <!-- <h1>Un billet simple pour l'Alaska</h1>
-    <img src="public/images/montagne.jpg" alt="Montagne en Alaska"/> -->
 </header>
 
 
