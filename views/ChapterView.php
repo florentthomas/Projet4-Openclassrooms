@@ -4,7 +4,16 @@ require('views/navView.php');
 
 <article class="p-5">
     <h1 class="text-center"><?=htmlspecialchars($chapter_item->get_title())?></h1>
+    <div>Date: <?=htmlspecialchars($chapter_item->get_date_create()->format('d/m/Y à H:i'))?></div>
+    <?php
+          if($chapter_item->get_date_create() != $chapter_item->get_date_update()){
+          ?>
+            <div>Date de modification: <?=htmlspecialchars($chapter_item->get_date_update()->format('d/m/Y à H:i'))?></div>
+          <?php
+          }
+          ?>
     <p><?=$chapter_item->get_content()?></p>
+    <div class="mt-5"><?=$chapter_item->get_author()?></div>
 </article>
 
 
