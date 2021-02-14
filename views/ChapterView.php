@@ -86,3 +86,7 @@ require('views/navView.php');
 </section>
 
 <span id="scroll_top"><i class="fas fa-arrow-up"></i></span>
+
+<?php
+include('views/FooterView.php');
+?>
