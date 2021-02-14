@@ -46,7 +46,7 @@ require('views/navView.php');
             <h5 class="card-header d-flex justify-content-between align-items-center">
                 <?=htmlspecialchars($comment->get_first_name()) ?>
                 <?=htmlspecialchars($comment->get_last_name()) ?>
-                <?=htmlspecialchars($comment->get_date_comment()->format('d/m/Y à h:i'))?>
+                <?=htmlspecialchars($comment->get_date_comment()->format('d/m/Y à H:i'))?>
                 
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#signal_comment_<?=$comment->get_id()?>">Signaler</button>
                 

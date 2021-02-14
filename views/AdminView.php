@@ -82,7 +82,7 @@ if(isset($comments_signal)){
   <div class="card-header">
     <?=htmlspecialchars($comment_signal->get_first_name())?>
     <?=htmlspecialchars($comment_signal->get_last_name())?>
-    <?=htmlspecialchars($comment_signal->get_date_comment()->format('d/m/Y à h:i'))?>
+    <?=htmlspecialchars($comment_signal->get_date_comment()->format('d/m/Y à H:i'))?>
   </div>
   <div class="card-body">
     <p class="card-text"><?=htmlspecialchars($comment_signal->get_comment())?></p>
