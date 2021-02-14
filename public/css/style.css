@@ -34,3 +34,8 @@ header{
 h3{
     text-align: center;
 }
+
+#image_erreur{
+    height:auto;
+    width:300px;
+}
