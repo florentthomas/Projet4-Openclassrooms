@@ -3,12 +3,12 @@ include('views/navView.php');
 ?>
 
 <header>
-    <h1>Un billet simple pour l'Alaska</h1>
-    <img src="public/images/montagne.jpg" alt="Montagne en Alaska"/>
+    <!-- <h1>Un billet simple pour l'Alaska</h1>
+    <img src="public/images/montagne.jpg" alt="Montagne en Alaska"/> -->
 </header>
 
 
-<section class="d-md-flex bg-secondary text-white p-5 mt-5" id="qui_suis_je">
+<section class="d-md-flex bg-secondary text-white p-5" id="qui_suis_je">
 
     <div class="col-md-4 align-self-center" style="text-align:center">
       <img src="public/images/Jean_Forteroche.jpg" class="rounded-circle img-fluid center-block" alt="photo de Jean Forteroche"/>

@@ -5,8 +5,10 @@ header h1{
 }
 
 header{
-    text-align: center;
-    position: relative;
+    background-image: url("../images/montagne.jpg");
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    height:500px;
 }
 
 #page_connection_admin{
