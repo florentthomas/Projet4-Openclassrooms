@@ -58,7 +58,7 @@ require('views/navView.php');
                                 <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="<?=URL?>chapitre/<?=$chapter_item->get_id()?>/signal" method=post>
+                            <form action="<?=URL?>chapitre/signal/<?=$chapter_item->get_id()?>" method=post>
                                 <div class="modal-body">
                                     Voulez-vous signaler ce commentaire?
                                 </div>
