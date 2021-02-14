@@ -8,7 +8,7 @@ require('views/navView.php');
 </article>
 
 
-<form method='post' action="<?=URL?>chapitre/<?=$chapter_item->get_id()?>/comment" class="p-5">
+<form method='post' action="<?=URL?>chapitre/comment/<?=$chapter_item->get_id()?>" class="p-5">
 
     <input type="hidden" value="<?=$chapter_item->get_id()?>" name="chapter_id"/>
 
@@ -46,7 +46,7 @@ require('views/navView.php');
             <h5 class="card-header d-flex justify-content-between align-items-center">
                 <?=htmlspecialchars($comment->get_first_name()) ?>
                 <?=htmlspecialchars($comment->get_last_name()) ?>
-                <?=htmlspecialchars($comment->get_date_comment()->format('d/m/Y à h:i'))?>
+                <?=htmlspecialchars($comment->get_date_comment()->format('d/m/Y à H:i'))?>
                 
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#signal_comment_<?=$comment->get_id()?>">Signaler</button>
                 
@@ -58,7 +58,7 @@ require('views/navView.php');
                                 <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="<?=URL?>chapitre/<?=$chapter_item->get_id()?>/signal" method=post>
+                            <form action="<?=URL?>chapitre/signal/<?=$chapter_item->get_id()?>" method=post>
                                 <div class="modal-body">
                                     Voulez-vous signaler ce commentaire?
                                 </div>

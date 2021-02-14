@@ -78,10 +78,11 @@ class CommentManager extends Manager{
     }
 
     public function add_comment(Comment $comment){
-        $sql='INSERT INTO comments (first_name,last_name,date_comment,comment,chapter_id)
-              VALUES(:first_name,:last_name,NOW(),:comment,:chapter_id)
+        $sql='INSERT INTO comments (first_name,last_name,comment,chapter_id)
+              VALUES(:first_name,:last_name,:comment,:chapter_id)
               ';
         $req=$this->bdd()->prepare($sql);
+
         $req->execute(Array('first_name' => $comment->get_first_name(),
                             'last_name' => $comment->get_last_name(),
                             'comment' => $comment->get_comment(),

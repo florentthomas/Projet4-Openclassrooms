@@ -61,7 +61,7 @@ class Chapitre{
                
                 $this->_commentManager->add_comment($comment);
             
-                header('Location:'.URL."chapitre/".$this->_chapterManager->get_chapter($this->_url[1])->get_id());
+                header('Location:'.URL."chapitre/view/".$this->_url[2]);
             }
             else{
                 Throw New \Exception('Le formulaire n\'est pas complet');
@@ -80,7 +80,7 @@ class Chapitre{
         try{
             if(isset($_POST['id_comment'])){
                 $this->_commentManager->signal_comment($_POST['id_comment']);
-                header('Location:'.URL."chapitre/".$this->_chapterManager->get_chapter($this->_url[1])->get_id());
+                header('Location:'.URL."chapitre/view/".$this->_url[2]);
             }
             else{
                 throw new \Exception('Identifiant du commentaire non valide, impossible de le signaler');
