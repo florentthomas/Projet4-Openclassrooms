@@ -20,7 +20,13 @@ class Admin{
 
     private $_view;
     private $_userManager;
+    private $_commentManager;
+    private $_chapterManager;
 
+    public function __construct(){
+        $this->_commentManager=new CommentManager;
+        $this->_chapterManager=new ChapterManager;
+    }
 
     public function index(){
         if(!isset($_SESSION['user'])){
@@ -28,29 +34,38 @@ class Admin{
             $this->_view->generate();   
         }
         else{
-            $comment_manager=new CommentManager;
-            $comments_signal=$comment_manager->get_comments_signal();
-            $chapterManager=new ChapterManager;
-            //var_dump($comments_signal);
+            
             $this->_view=new View('AdminView','Administration');
-            $this->_view->generate(Array('comments_signal'=>$comment_manager->get_comments_signal(),
-                                         'chapters'=>$chapterManager->get_chapters()));
+            $this->_view->generate(Array('comments_signal'=>$this->_commentManager->get_comments_signal(),
+                                         'chapters'=>$this->_chapterManager->get_chapters()));
         }
     }
 
     public function connection(){
-        if(!empty($_POST['email']) && !empty($_POST["password"])){
+        try{
+            if(!empty($_POST['email']) && !empty($_POST["password"])){
       
-            $this->_userManager=new UserManager();
-            $user=$this->_userManager->get_user($_POST['email'],$_POST['password']);
-            if($user != false){
-                $_SESSION['user']=$user;
-                header('Location:'.URL.'admin');
-            }else{
-                $this->_view=new View('ConnectionView','Se connecter');
-                $this->_view->generate(array('error_connection' =>''));
+                $this->_userManager=new UserManager();
+                $user=$this->_userManager->get_user($_POST['email'],$_POST['password']);
+                if($user != false){
+                    $_SESSION['user']=$user;
+                    header('Location:'.URL.'admin');
+                }else{
+                    $this->_view=new View('ConnectionView','Se connecter');
+                    $this->_view->generate(array('error_connection' =>''));
+                }
             }
+            else{
+                Throw new \Exception('Les champs ne sont pas remplis');
+            }
+
         }
+        catch(\Exception $e){
+            $error_msg=$e->getMessage();
+            $this->_view=new View('errorView','Erreur');
+            $this->_view->generate(array('error_message'=>$error_msg));
+        }
+        
     }
 
     public function disconnect(){
@@ -60,11 +75,10 @@ class Admin{
 
     public function modify_chapter(){
         try{
-            $chapterManager=new ChapterManager;
-           
-            if(isset($_POST['chapter_id']) && $_POST['chapter_id'] > 0 && $chapterManager->chapter_exists($_POST['chapter_id'])){
+            
+            if(isset($_POST['chapter_id']) && $this->_chapterManager->chapter_exists($_POST['chapter_id'])){
                 $this->_view=new View('Modify_chapterView','Modifier un chapitre');
-                $this->_view->generate(array('chapter' =>$chapterManager->get_chapter($_POST['chapter_id'])));
+                $this->_view->generate(array('chapter' =>$this->_chapterManager->get_chapter($_POST['chapter_id'])));
             }
             else{
                 Throw new \Exception('Le chapitre n\'existe pas');
@@ -81,8 +95,8 @@ class Admin{
         try{
            
             if(isset($_POST['id']) && !empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['author'])){
-                $chapterManager=new ChapterManager;
-                if($chapterManager->chapter_exists($_POST['id'])){
+              
+                if($this->_chapterManager->chapter_exists($_POST['id'])){
                     $data=Array('id' =>$_POST['id'],
                                 'title' =>$_POST['title'],
                                 'content' =>$_POST['content'],
@@ -92,7 +106,7 @@ class Admin{
                     header('Location:'.URL.'admin');
                 }
                 else{
-                    Throw new \Exception('Le chapitre n\'existe pas');
+                    Throw new \Exception('Le chapitre n\'existe pas, modification impossible à effectuer');
                 }
             }
             else{
@@ -110,11 +124,9 @@ class Admin{
     public function delete_chapter(){
 
         try{
-            $chapterManager=new ChapterManager;
-            $commentManager=new CommentManager;
-            if(isset($_POST['id']) && $chapterManager->chapter_exists($_POST['id'])){
-                $chapterManager->delete('chapters',$_POST['id']);
-                $commentManager->delete_comments($_POST['id']);
+            if(isset($_POST['id']) && $this->_chapterManager->chapter_exists($_POST['id'])){
+                $this->_chapterManager->delete('chapters',$_POST['id']);
+                $this->_commentManager->delete_comments($_POST['id']);
                 header('Location:'.URL.'admin');
             }
             else{
@@ -130,17 +142,16 @@ class Admin{
 
     public function comment_signal(){
         try{
-            $commentManager=new CommentManager;
             
-            if(isset($_POST['id'])){
+            if(isset($_POST['id']) && $this->_commentManager->comment_exists($_POST['id'])){
 
-                if(isset($_POST['supprimer']) && $commentManager->comment_exists($_POST['id']) != false){
+                if(isset($_POST['supprimer'])){
                    
-                    $commentManager->delete('comments',$_POST['id']);
+                    $this->_commentManager->delete('comments',$_POST['id']);
                     header('Location:'.URL.'admin');
                 }
                 elseif(isset($_POST['approuver'])){
-                    $commentManager->approve_comment($_POST['id']);
+                    $this->_commentManager->approve_comment($_POST['id']);
                     header('Location:'.URL.'admin');
                 }
                 else{
@@ -165,13 +176,11 @@ class Admin{
         {
             if(!empty($_POST['title']) && !empty($_POST['author']) && !empty($_POST['content'])){
                 
-                $chapterManager=new ChapterManager;
-
                 $data=Array('title' => $_POST['title'], 'author' => $_POST['author'], 'content' => $_POST['content']);
 
                 $chapter=new ChapterModel($data);
 
-                $chapterManager->add_chapter($chapter);
+                $this->_chapterManager->add_chapter($chapter);
 
                 header('Location:'.URL.'admin');
 
