@@ -11,7 +11,8 @@ class CommentManager extends Manager{
     public function get_comments($id){
         $sql="SELECT *
               FROM comments
-              WHERE comments.chapter_id = :id";
+              WHERE comments.chapter_id = :id
+              ORDER BY date_comment DESC";
 
         $req=$this->bdd()->prepare($sql);
         $req->execute(Array('id' => $id));
