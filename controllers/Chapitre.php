@@ -54,14 +54,22 @@ class Chapitre{
     public function comment(){
         try{
             if(!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST['comment']) && !empty($_POST['chapter_id'])){
-                $comment=new Comment(Array("first_name" => $_POST['first_name'],
+                
+                if($this->_chapterManager->chapter_exists($_POST['chapter_id'])){
+                    $comment=new Comment(Array("first_name" => $_POST['first_name'],
                                            'last_name' => $_POST['last_name'],
                                            'comment' => $_POST['comment'],
                                            'chapter_id' => $_POST['chapter_id']));
                
-                $this->_commentManager->add_comment($comment);
+                    $this->_commentManager->add_comment($comment);
             
-                header('Location:'.URL."chapitre/view/".$this->_url[2]);
+                    header('Location:'.URL."chapitre/view/".$this->_url[2]);
+
+                }
+                else{
+                    Throw new \Exception('Le chapitre n\'existe pas');
+                }
+                
             }
             else{
                 Throw New \Exception('Le formulaire n\'est pas complet');
@@ -78,7 +86,7 @@ class Chapitre{
 
     public function signal(){
         try{
-            if(isset($_POST['id_comment'])){
+            if(isset($_POST['id_comment']) && $this->_commentManager->comment_exists($_POST['id_comment'])){
                 $this->_commentManager->signal_comment($_POST['id_comment']);
                 header('Location:'.URL."chapitre/view/".$this->_url[2]);
             }
