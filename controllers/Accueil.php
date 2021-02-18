@@ -33,19 +33,12 @@ class Accueil{
                 $name_chapters_url[]=$name_chapter_url;
             }
             
-            
             $this->_view->generate(array('chapters' => $this->_chapterManager->get_chapters(),
                                          'name_chapters_url' =>$name_chapters_url));
         }
 
-        $this->_view->generate();
-
-
-            
-
-        
-        
-    
+        else{
+            $this->_view->generate();
+        }    
     }
-
 }
