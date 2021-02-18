@@ -20,13 +20,15 @@ class ChapterManager extends Manager{
             $chapters[]=new ChapterModel($data);
         }
 
-        foreach($chapters as $chapter){
-            $chapter->set_date_create(new \DateTime($chapter->get_date_create()));
-            $chapter->set_date_update(new \DateTime($chapter->get_date_update()));
-        }
-        
+        if(isset($chapters)){
+            foreach($chapters as $chapter){
+                $chapter->set_date_create(new \DateTime($chapter->get_date_create()));
+                $chapter->set_date_update(new \DateTime($chapter->get_date_update()));
+            }
+            
+            return $chapters;
 
-        return $chapters;
+        }
     }
 
     public function get_chapter($id){
