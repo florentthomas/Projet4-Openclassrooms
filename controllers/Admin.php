@@ -102,7 +102,7 @@ class Admin{
                                 'content' =>$_POST['content'],
                                 'author' =>$_POST['author']);
                    
-                    $chapterManager->update_chapter(new ChapterModel($data));
+                    $this->_chapterManager->update_chapter(new ChapterModel($data));
                     header('Location:'.URL.'admin');
                 }
                 else{
@@ -155,7 +155,7 @@ class Admin{
                     header('Location:'.URL.'admin');
                 }
                 else{
-                    Throw new \Exception('Erreur veuillez renouveller l\'opération');
+                    Throw new \Exception('Erreur: l\'opération n\'a pas pu être effectuée');
                 }
             }
 
