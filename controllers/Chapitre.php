@@ -6,10 +6,6 @@ use \Projet4\Model\CommentManager;
 use \Projet4\View\View;
 use \Projet4\Model\Comment;
 
-require(ROOT.'models/ChapterManager.php');
-require(ROOT.'models/CommentManager.php');
-require(ROOT.'views/View.php');
-
 class Chapitre{
 
     private $_chapterManager,

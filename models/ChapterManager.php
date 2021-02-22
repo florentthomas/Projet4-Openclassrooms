@@ -3,12 +3,9 @@
 namespace Projet4\Model;
 
 
-use \Projet4\Model\ChapterModel;
+use \Projet4\Model\Chapter;
 use \Projet4\Model\Manager;
 
-
-require(ROOT.'models/chapter.php');
-require_once(ROOT.'models/Manager.php');
 
 class ChapterManager extends Manager{
 
@@ -17,7 +14,7 @@ class ChapterManager extends Manager{
         $req=$this->get_all("chapters");
 
         while($data=$req->fetch(\PDO::FETCH_ASSOC)){
-            $chapters[]=new ChapterModel($data);
+            $chapters[]=new Chapter($data);
         }
 
         if(isset($chapters)){
@@ -35,7 +32,7 @@ class ChapterManager extends Manager{
 
         $respons=$this->get_item('chapters',"id",$id);
         $data=$respons->fetch(\PDO::FETCH_ASSOC);
-        $chapter=new ChapterModel($data);
+        $chapter=new Chapter($data);
         $chapter->set_date_create(new \DateTime($chapter->get_date_create()));
         $chapter->set_date_update(new \DateTime($chapter->get_date_update()));
     
@@ -43,7 +40,7 @@ class ChapterManager extends Manager{
         
     }
 
-    public function update_chapter(ChapterModel $chapter){
+    public function update_chapter(Chapter $chapter){
         $sql="UPDATE chapters 
               SET title=:title, content=:content, author=:author, date_update=NOW()
               WHERE id=:id";
@@ -56,7 +53,7 @@ class ChapterManager extends Manager{
                             "id" => $chapter->get_id()));
     }
 
-    public function add_chapter(ChapterModel $chapter){
+    public function add_chapter(Chapter $chapter){
         $sql="INSERT INTO chapters (title,content,author,date_create,date_update)
               VALUE(:title,:content,:author,NOW(),NOW())";
 

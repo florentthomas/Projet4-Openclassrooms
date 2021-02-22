@@ -3,13 +3,11 @@
 namespace Projet4\Model;
 
 use Projet4\Model\Manager;
-require_once(ROOT.'models/Manager.php');
+
 
 class UserManager extends Manager{
 
     public function get_user($email,$password){
-
-        // $password=password_hash($password, PASSWORD_DEFAULT);
 
         $sql="SELECT * FROM users WHERE email=:email";
 

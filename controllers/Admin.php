@@ -7,13 +7,7 @@ use \Projet4\Model\User;
 use \Projet4\Model\UserManager;
 use \Projet4\Model\CommentManager;
 use \Projet4\Model\ChapterManager;
-use \Projet4\Model\ChapterModel;
-
-require(ROOT.'views/View.php');
-require(ROOT.'models/UserManager.php');
-require(ROOT.'models/CommentManager.php');
-require(ROOT.'models/ChapterManager.php');
-require_once(ROOT.'models/Chapter.php');
+use \Projet4\Model\Chapter;
 
 
 class Admin{
@@ -102,7 +96,7 @@ class Admin{
                                 'content' =>$_POST['content'],
                                 'author' =>$_POST['author']);
                    
-                    $this->_chapterManager->update_chapter(new ChapterModel($data));
+                    $this->_chapterManager->update_chapter(new Chapter($data));
                     header('Location:'.URL.'admin');
                 }
                 else{
@@ -178,7 +172,7 @@ class Admin{
                 
                 $data=Array('title' => $_POST['title'], 'author' => $_POST['author'], 'content' => $_POST['content']);
 
-                $chapter=new ChapterModel($data);
+                $chapter=new Chapter($data);
 
                 $this->_chapterManager->add_chapter($chapter);
 
@@ -192,7 +186,7 @@ class Admin{
             }
         }
 
-        catch(\Exception $a){
+        catch(\Exception $e){
             $error_msg=$e->getMessage();
             $this->_view=new View('errorView','Erreur');
             $this->_view->generate(array('error_message'=>$error_msg));

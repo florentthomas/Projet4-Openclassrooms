@@ -2,7 +2,6 @@
 
 namespace Projet4\Model;
 
-require_once(ROOT."models/Hydrate.php");
 
 class User{
 

@@ -4,8 +4,6 @@ namespace Projet4\Model;
 use \Projet4\Model\Comment;
 use \Projet4\Model\Manager;
 
-require(ROOT."models/Comment.php");
-
 class CommentManager extends Manager{
 
     public function get_comments($id){

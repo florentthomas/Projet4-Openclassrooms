@@ -4,10 +4,6 @@ namespace Projet4\Controller;
 use \Projet4\Model\ChapterManager;
 use \Projet4\View\View;
 
-require(ROOT.'views/View.php');
-require(ROOT.'models/ChapterManager.php');
-
-
 class Accueil{
 
     private $_view,
