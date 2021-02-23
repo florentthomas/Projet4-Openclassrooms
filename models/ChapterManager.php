@@ -83,4 +83,8 @@ class ChapterManager extends Manager{
 
         return $response;
     }
+
+    public function delete_chapter($table,$id){
+        $this->delete($table,$id);
+    }
 }

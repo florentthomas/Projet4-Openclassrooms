@@ -119,7 +119,7 @@ class Admin{
 
         try{
             if(isset($_POST['id']) && $this->_chapterManager->chapter_exists($_POST['id'])){
-                $this->_chapterManager->delete('chapters',$_POST['id']);
+                $this->_chapterManager->delete_chapter('chapters',$_POST['id']);
                 $this->_commentManager->delete_comments($_POST['id']);
                 header('Location:'.URL.'admin');
             }
