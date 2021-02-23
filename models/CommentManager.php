@@ -30,7 +30,7 @@ class CommentManager extends Manager{
     }
 
     public function get_comments_signal(){
-        $sql="SELECT * FROM comments WHERE signal_comment >= 1";
+        $sql="SELECT * FROM comments WHERE signal_comment >= 1 ORDER BY signal_comment DESC";
 
         $req=$this->bdd()->query($sql);
         while($data=$req->fetch(\PDO::FETCH_ASSOC)){
