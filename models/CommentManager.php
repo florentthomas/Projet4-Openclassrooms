@@ -103,4 +103,8 @@ class CommentManager extends Manager{
         $req->execute(Array('chapter_id' => $chapter_id));
     }
 
+    public function delete_comment($id){
+        $this->delete('comments',$id);
+    }
+
 }

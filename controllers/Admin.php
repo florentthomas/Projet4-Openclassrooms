@@ -141,7 +141,7 @@ class Admin{
 
                 if(isset($_POST['supprimer'])){
                    
-                    $this->_commentManager->delete('comments',$_POST['id']);
+                    $this->_commentManager->delete_comment($_POST['id']);
                     header('Location:'.URL.'admin');
                 }
                 elseif(isset($_POST['approuver'])){
