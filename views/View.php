@@ -6,14 +6,17 @@ class View{
     private $_title;
     private $_file;
 
-    public function __construct($file,$title){
+    public function __construct($file,$title,$description=''){
         $this->_file=ROOT."views/".$file.".php";
         $this->_title=htmlspecialchars($title);
+        $this->_description=strip_tags($description);
     }
 
     public function generate($data=[]){
         $content=$this->generateFile($this->_file,$data);
-        $view=$this->generateFile("views/template.php",array('title' => $this->_title,'content' => $content));
+        $view=$this->generateFile("views/template.php",array('title' => $this->_title,
+                                                             'content' => $content,
+                                                             'description' => $this->_description));
 
         echo $view;
     }

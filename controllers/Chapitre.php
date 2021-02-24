@@ -28,7 +28,9 @@ class Chapitre{
             if(is_numeric($id_chapter) && $this->_chapterManager->chapter_exists($id_chapter)){
 
                 //Definition de la page vue, envoie des données sous forme de tableau
-                $this->_view=new View('chapterView',$this->_chapterManager->get_chapter($id_chapter)->get_title());
+                $chapter=$this->_chapterManager->get_chapter($id_chapter);
+                $description=substr($chapter->get_content(),0,150);
+                $this->_view=new View('chapterView',$this->_chapterManager->get_chapter($id_chapter)->get_title(),$description);
 
                 $this->_view->generate(array('chapter_item'=>$this->_chapterManager->get_chapter($id_chapter),
                                      'chapters' => $this->_chapterManager->get_chapters(),
