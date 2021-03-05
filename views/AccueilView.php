@@ -35,7 +35,7 @@ include('views/navView.php');
         <h5 class="card-title"><?=htmlspecialchars($chapter->get_title())?></h5>
         <p class="card-text"><?=substr($chapter->get_content(),0,300).' ...'?></p>
       
-        <a href="chapitre/view/<?=htmlspecialchars($chapter->get_id())?>/<?=$name_chapters_url[$i]?> " class="btn btn-primary">Lire le chapitre</a>
+        <a href="chapitre/view/<?=htmlspecialchars($chapter->get_id())?>/<?=strip_tags(\Projet4\Tool\Tools::rewrite_url()[$i])?> " class="btn btn-primary">Lire le chapitre</a>
         
       </div>
     </div>

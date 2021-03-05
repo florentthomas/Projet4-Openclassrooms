@@ -27,10 +27,12 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <?php
             if(isset($chapters)){
+              $i=0;
               foreach($chapters as $chapter){
               ?>
-              <a class="dropdown-item" href='<?=URL?>chapitre/view/<?=htmlspecialchars($chapter->get_id())?>'><?=htmlspecialchars($chapter->get_title())?></a>
+              <a class="dropdown-item" href='<?=URL?>chapitre/view/<?=htmlspecialchars($chapter->get_id())?>/<?=strip_tags(\Projet4\Tool\Tools::rewrite_url()[$i])?>'><?=strip_tags($chapter->get_title())?></a>
               <?php
+              $i++;
               }  
             }
             ?>

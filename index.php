@@ -13,7 +13,8 @@ spl_autoload_register(function($class){
     
     $files = array(ROOT.'controllers/'.$class.'.php',
                     ROOT.'models/'.$class.'.php',
-                    ROOT.'views/'.$class.'.php');
+                    ROOT.'views/'.$class.'.php',
+                    ROOT.$class.'.php');
     
     foreach ($files as $file)
     {
