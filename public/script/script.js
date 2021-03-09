@@ -23,4 +23,24 @@ function animationScroll(){
 }
 
 
+function hide(){
+    
+    const panel=this.nextElementSibling;
+    const chevron=this.querySelector('i');
+
+    if(panel.style.display === "none"){
+        panel.style.display="block";
+        chevron.className="fas fa-chevron-up";
+    }else{
+        panel.style.display="none";
+        chevron.className="fas fa-chevron-down";
+    }
+}
+
+const adminAccordionElts=document.getElementsByClassName("admin_accordion");
+
+for(i=0; i < adminAccordionElts.length;i++){
+    adminAccordionElts[i].addEventListener("click",hide);
+}
+
 

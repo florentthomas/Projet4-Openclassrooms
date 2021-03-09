@@ -6,7 +6,7 @@ if(isset($_SESSION['user'])){
 
 
 <section class="m-5" id="ecrire_un_chapitre">
-  <h3>Ajouter un nouveau chapitre</h3>
+  <h3 class="admin_accordion">Ajouter un nouveau chapitre <i class="fas fa-chevron-up"></i></h3>
   <form method="post" action="<?=URL?>admin/add_chapter">
       <div class="form-group">
         <label for="title">Titre</label>
@@ -24,7 +24,8 @@ if(isset($_SESSION['user'])){
 </section>
 
 <section class="m-5" id="modifier_chapitre">
-  <h3>Modifier un chapitre</h3>
+  <h3 class="admin_accordion" class='p2'>Modifier un chapitre <i class="fas fa-chevron-up"></i></h3>
+  <div>
   <?php
     if(isset($chapters)){
       foreach($chapters as $chapter){
@@ -55,11 +56,13 @@ if(isset($_SESSION['user'])){
       }
     }
   ?>
+  </div>
 
 </section>
 
 <section class="m-5" id="commentaires_signales">
-  <h3>Vous avez <?=isset($comments_signal) ? count($comments_signal) : '0'?> commentaire(s) signalé(s)</h3>
+  <h3 class="admin_accordion">Vous avez <?=isset($comments_signal) ? count($comments_signal) : '0'?> commentaire(s) signalé(s) <i class="fas fa-chevron-up"></i> </h3>
+<div>
 <?php
 if(isset($comments_signal)){
   foreach($comments_signal as $comment_signal){
@@ -84,6 +87,7 @@ if(isset($comments_signal)){
   }
 }
 ?>
+</div>
 </section>
 
 <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
