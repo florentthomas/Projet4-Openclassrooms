@@ -1,7 +1,7 @@
 <?php
 namespace Projet4\Model;
 
-trait hydrate{
+trait Hydrate{
     public function hydrate($data){
             foreach($data as $key=>$value){
                 $method='set_'.$key;
