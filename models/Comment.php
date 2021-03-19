@@ -4,7 +4,7 @@ namespace Projet4\Model;
 
 class Comment{
 
-    use hydrate;
+    use Hydrate;
 
     private $_id,
             $_first_name,

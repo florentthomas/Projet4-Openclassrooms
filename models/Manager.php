@@ -7,7 +7,7 @@ abstract class Manager{
     private $_bdd;
 
     protected function bdd(){
-        $this->_bdd=new \PDO("mysql:host=localhost;dbname=project_4_oc;charset=utf8","root","");
+        $this->_bdd=new \PDO("mysql:host=localhost;dbname=257378;charset=utf8","257378","dgzsjiz5zkdk");
         return $this->_bdd;
     }
 

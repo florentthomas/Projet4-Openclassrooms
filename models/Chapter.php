@@ -5,7 +5,7 @@ namespace Projet4\Model;
 
 class Chapter{
 
-    use hydrate;
+    use Hydrate;
 
     private $_title,
             $_id,
