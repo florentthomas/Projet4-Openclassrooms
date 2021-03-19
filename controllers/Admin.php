@@ -2,7 +2,7 @@
 
 namespace Projet4\Controller;
 
-use \Projet4\view\view;
+use \Projet4\View\View;
 use \Projet4\Model\User;
 use \Projet4\Model\UserManager;
 use \Projet4\Model\CommentManager;
