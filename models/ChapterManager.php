@@ -11,11 +11,9 @@ class ChapterManager extends Manager{
 
     public function get_chapters(){
         
-        $sql="SELECT * FROM chapters ORDER BY id DESC";
-
-        $req=$this->bdd()->query($sql);
+        $respons=$this->get_all('chapters');
         
-        while($data=$req->fetch(\PDO::FETCH_ASSOC)){
+        while($data=$respons->fetch(\PDO::FETCH_ASSOC)){
             $chapters[]=new Chapter($data);
         }
 
