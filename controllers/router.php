@@ -20,7 +20,7 @@ class Router{
                 $url=explode('/',filter_var($_GET['url'],FILTER_SANITIZE_URL));
                 $controller='Projet4\\Controller\\'.ucfirst(strtolower($url[0]));
                 $controller_file='controllers/'.ucfirst(strtolower($url[0])).'.php';
-            
+                
                 if(file_exists(ROOT.$controller_file)){   
                     $this->_controller=new $controller($url);
 
@@ -55,7 +55,7 @@ class Router{
         }
         catch(\Exception $e){
             $error_msg=$e->getMessage();
-            $this->_view=new View('errorView','Erreur');
+            $this->_view=new View('ErrorView','Erreur');
             $this->_view->generate(array('error_message'=>$error_msg));
         }
     } 

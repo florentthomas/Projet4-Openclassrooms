@@ -30,7 +30,7 @@ class Chapitre{
                 //Definition de la page vue, envoie des données sous forme de tableau
                 $chapter=$this->_chapterManager->get_chapter($id_chapter);
                 $description=substr($chapter->get_content(),0,150);
-                $this->_view=new View('chapterView',$this->_chapterManager->get_chapter($id_chapter)->get_title(),$description);
+                $this->_view=new View('ChapterView',$this->_chapterManager->get_chapter($id_chapter)->get_title(),$description);
 
                 $this->_view->generate(array('chapter_item'=>$this->_chapterManager->get_chapter($id_chapter),
                                      'chapters' => $this->_chapterManager->get_chapters(),
@@ -44,7 +44,7 @@ class Chapitre{
         }
         catch(\Exception $e){
             $error_msg=$e->getMessage();
-            $this->_view=new View('errorView','Erreur');
+            $this->_view=new View('ErrorView','Erreur');
             $this->_view->generate(array('error_message'=>$error_msg));
         }
     }
@@ -77,7 +77,7 @@ class Chapitre{
         }
         catch(\Exception $e){
             $error_msg=$e->getMessage();
-            $this->_view=new View('errorView','Erreur');
+            $this->_view=new View('ErrorView','Erreur');
             $this->_view->generate(array('error_message'=>$error_msg));
         }
     }
@@ -96,7 +96,7 @@ class Chapitre{
         }
         catch(\Exception $e){
             $error_msg=$e->getMessage();
-            $this->_view=new View('errorView','Erreur');
+            $this->_view=new View('ErrorView','Erreur');
             $this->_view->generate(array('error_message'=>$error_msg));
         }
         
