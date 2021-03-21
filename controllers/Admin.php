@@ -56,7 +56,7 @@ class Admin{
         }
         catch(\Exception $e){
             $error_msg=$e->getMessage();
-            $this->_view=new View('errorView','Erreur');
+            $this->_view=new View('ErrorView','Erreur');
             $this->_view->generate(array('error_message'=>$error_msg));
         }
         
@@ -80,7 +80,7 @@ class Admin{
         }
         catch(\Exception $e){
             $error_msg=$e->getMessage();
-            $this->_view=new View('errorView','Erreur');
+            $this->_view=new View('ErrorView','Erreur');
             $this->_view->generate(array('error_message'=>$error_msg));
         }
     }
@@ -110,7 +110,7 @@ class Admin{
 
         catch(\Exception $e){
             $error_msg=$e->getMessage();
-            $this->_view=new View('errorView','Erreur');
+            $this->_view=new View('ErrorView','Erreur');
             $this->_view->generate(array('error_message'=>$error_msg));
         }
     }
@@ -129,7 +129,7 @@ class Admin{
         }
         catch(\Exception $e){
             $error_msg=$e->getMessage();
-            $this->_view=new View('errorView','Erreur');
+            $this->_view=new View('ErrorView','Erreur');
             $this->_view->generate(array('error_message'=>$error_msg));
         }
     }
@@ -160,7 +160,7 @@ class Admin{
         }
         catch(\Exception $e){
             $error_msg=$e->getMessage();
-            $this->_view=new View('errorView','Erreur');
+            $this->_view=new View('ErrorView','Erreur');
             $this->_view->generate(array('error_message'=>$error_msg));
         }
     }
@@ -188,7 +188,7 @@ class Admin{
 
         catch(\Exception $e){
             $error_msg=$e->getMessage();
-            $this->_view=new View('errorView','Erreur');
+            $this->_view=new View('ErrorView','Erreur');
             $this->_view->generate(array('error_message'=>$error_msg));
         }
     }
