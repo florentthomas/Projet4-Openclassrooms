@@ -57,13 +57,10 @@ class CommentManager extends Manager{
     }
 
     public function comment_exists($id){
-        $sql="SELECT id FROM comments WHERE id=:id";
+        
+        $respons=$this->get_item('comments','id',$id);
 
-        $req=$this->bdd()->prepare($sql);
-
-        $req->execute(Array('id'=>$id));
-
-        $response=$req->fetch(\PDO::FETCH_ASSOC);
+        $response=$respons->fetch(\PDO::FETCH_ASSOC);
 
         return $response;
     }
