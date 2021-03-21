@@ -64,26 +64,17 @@ class ChapterManager extends Manager{
                             "author" => $chapter->get_author()));
     }
 
-    public function count_chapters(){
-        $sql="SELECT COUNT(*) FROM chapters";
-        $req=$this->bdd()->query($sql);
-        $count_chapters=$req->fetch();
-        return $count_chapters;
-    }
 
     public function chapter_exists($id){
-        
-        $sql="SELECT id FROM chapters WHERE id=:id";
+     
+        $respons=$this->get_item('chapters','id',$id);    
+     
+        $data=$respons->fetch(\PDO::FETCH_ASSOC);
 
-        $req=$this->bdd()->prepare($sql);
-
-        $req->execute(Array('id'=>$id));
-
-        $response=$req->fetch(\PDO::FETCH_ASSOC);
-
-        return $response;
+        return $data;
     }
 
+    
     public function delete_chapter($id){
         $this->delete('chapters',$id);
     }
