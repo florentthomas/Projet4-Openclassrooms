@@ -50,8 +50,9 @@ class CommentManager extends Manager{
     }
     
     public function count_comment($id){
-        $sql="SELECT COUNT(*) FROM comments WHERE chapter_id=$id";
-        $req=$this->bdd()->query($sql);
+        $sql="SELECT COUNT(*) FROM comments WHERE chapter_id=:id";
+        $req=$this->bdd()->prepare($sql);
+        $req->execute(array('id' => $id));
         $count_comment=$req->fetch();
         return $count_comment;
     }
@@ -61,7 +62,6 @@ class CommentManager extends Manager{
         $respons=$this->get_item('comments','id',$id);
 
         $response=$respons->fetch(\PDO::FETCH_ASSOC);
-
         return $response;
     }
 
